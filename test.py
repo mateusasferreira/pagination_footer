@@ -34,11 +34,6 @@ class TestPaginationFooter(unittest.TestCase):
         expected_result = '1 2 ... 6 7 8 9 10'
         self.assertEqual(create_pagination_footer(*args), expected_result)
 
-    def test_no_around_and_no_boundary_at_last_page(self):
-        args = (1, 10, 0, 0)
-        expected_result = '1 ... 10'
-        self.assertEqual(create_pagination_footer(*args), expected_result)
-
     def test_last_page_with_around_no_boundary(self):
         args = (10, 10, 0, 2)
         expected_result = '... 8 9 10'
@@ -62,6 +57,11 @@ class TestPaginationFooter(unittest.TestCase):
     def test_around_sum_gt_total_pages(self):
         args = (3, 5, 0, 4)
         expected_result = '1 2 3 4 5'
+        self.assertEqual(create_pagination_footer(*args), expected_result)
+
+    def test_ellipses_after_around_no_boundaries(self):
+        args = (2, 4, 0, 1)
+        expected_result = '1 2 3 ...'
         self.assertEqual(create_pagination_footer(*args), expected_result)
 
     def test_create_footer_current_page_gt_total(self):

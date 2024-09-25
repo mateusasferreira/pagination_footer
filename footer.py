@@ -28,12 +28,8 @@ def create_pagination_footer(
         around_end + 1, total_pages - boundaries + 1, left_boundary_length
     )
     
-    if right_boundary_start > total_pages and total_pages > current_page:
-        right_boundary_start = total_pages
-
-    if right_boundary_start and right_boundary_length > around_end + 1:
-        for new_page in range(right_boundary_start, right_boundary_length):
-            pages.append(str(new_page))
+    for new_page in range(right_boundary_start, right_boundary_length):
+        pages.append(str(new_page))
 
     result = " ".join(pages)
 
