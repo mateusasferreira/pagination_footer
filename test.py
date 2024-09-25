@@ -59,7 +59,7 @@ class TestPaginationFooter(unittest.TestCase):
         expected_result = '1 2 3 4 5 6 7 8 9 10'
         self.assertEqual(create_pagination_footer(*args), expected_result)
     
-    def test_around_sum_gt_total_pages (self):
+    def test_around_sum_gt_total_pages(self):
         args = (3, 5, 0, 4)
         expected_result = '1 2 3 4 5'
         self.assertEqual(create_pagination_footer(*args), expected_result)
